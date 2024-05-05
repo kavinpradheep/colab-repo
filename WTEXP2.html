@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Activity Generator</title>
+</head>
+<body>
+    <div id="activity"></div>
+    <button onclick="fetchActivity()">Fetch Activity</button>
+
+    <script>
+        async function fetchActivity() {
+            const response = await fetch('https://www.boredapi.com/api/activity');
+            const data = await response.json();
+            displayActivity(data.activity);
+        }
+
+        function displayActivity(activity) {
+            const activityContainer = document.getElementById('activity');
+            activityContainer.innerHTML = `
+                <p>Random Activity: ${activity}</p>
+            `;
+        }
+    </script>
+</body>
+</html>
